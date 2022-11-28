@@ -14,7 +14,7 @@
     </parent>
     <groupId>we-plus</groupId>
     <artifactId>sfg_pet_clinic</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>sfg_pet_clinic</name>
     <description>sfg_pet_clinic</description>
     <properties>
@@ -40,6 +40,7 @@
 
     <scm>
         <developerConnection>scm:git:git@github.com:EloJ96/sfg_pet_clinic.git</developerConnection>
+    <tag>sfg_pet_clinic-0.0.1</tag>
   </scm>
 
 </project>

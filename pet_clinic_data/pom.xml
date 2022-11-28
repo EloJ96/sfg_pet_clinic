@@ -3,7 +3,7 @@
     <parent>
         <artifactId>sfg_pet_clinic</artifactId>
         <groupId>we-plus</groupId>
-        <version>0</version>
+        <version>0.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -45,4 +45,8 @@
 
     </dependencies>
 
+
+  <scm>
+    <tag>sfg_pet_clinic-0.0.1</tag>
+  </scm>
 </project>
