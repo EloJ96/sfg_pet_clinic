@@ -1,10 +1,11 @@
 package weplus.sfg_pet_clinic.services.map;
 
+import org.springframework.stereotype.Service;
 import weplus.sfg_pet_clinic.model.Owner;
 import weplus.sfg_pet_clinic.services.OwnerService;
 
 import java.util.Set;
-
+@Service
 public class OwnerMapService extends AbstractMapService<Owner, Long>
         implements OwnerService {
 

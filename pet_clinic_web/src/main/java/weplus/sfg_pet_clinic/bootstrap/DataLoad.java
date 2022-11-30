@@ -1,5 +1,6 @@
 package weplus.sfg_pet_clinic.bootstrap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -7,8 +8,6 @@ import weplus.sfg_pet_clinic.model.Owner;
 import weplus.sfg_pet_clinic.model.Vet;
 import weplus.sfg_pet_clinic.services.OwnerService;
 import weplus.sfg_pet_clinic.services.VetService;
-import weplus.sfg_pet_clinic.services.map.OwnerMapService;
-import weplus.sfg_pet_clinic.services.map.VetMapService;
 
 @Component
 public class DataLoad implements CommandLineRunner {
@@ -16,9 +15,9 @@ public class DataLoad implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
 
-    public DataLoad(){
-        ownerService = new OwnerMapService();
-        vetService = new VetMapService();
+    public DataLoad(OwnerService ownerService, VetService vetService){
+        this.ownerService = ownerService;
+        this.vetService = vetService;
     }
 
     @Override
