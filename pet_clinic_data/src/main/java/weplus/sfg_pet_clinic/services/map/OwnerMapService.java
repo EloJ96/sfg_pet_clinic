@@ -1,12 +1,12 @@
 package weplus.sfg_pet_clinic.services.map;
 
 import weplus.sfg_pet_clinic.model.Owner;
-import weplus.sfg_pet_clinic.services.CrudService;
+import weplus.sfg_pet_clinic.services.OwnerService;
 
 import java.util.Set;
 
 public class OwnerMapService extends AbstractMapService<Owner, Long>
-        implements CrudService<Owner, Long> {
+        implements OwnerService {
 
     @Override
     public Set<Owner> findAll() {
@@ -31,6 +31,12 @@ public class OwnerMapService extends AbstractMapService<Owner, Long>
     public void deleteById(Long id) {
         super.deleteById(id);
     }
+
+    @Override
+    public Owner findByLastName(String lastName) {
+        return null;
+    }
+
 
 
 
