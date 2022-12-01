@@ -10,7 +10,11 @@ import weplus.sfg_pet_clinic.services.VetService;
 public class VetController {
 
 
+    @RequestMapping({ "/vets","vets/index", "vets/index.html"})
+    public String listVets() {
 
+        return "vets/index";
+    }
 
 
 
