@@ -1,11 +1,13 @@
 package weplus.sfg_pet_clinic.services.map;
 
+import weplus.sfg_pet_clinic.model.BaseEntity;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public abstract class AbstractMapService<T extends, ID extends> {
+public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> {
 
     protected Map<ID, T> map = new HashMap<>();
 
