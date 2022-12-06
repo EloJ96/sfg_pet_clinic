@@ -5,8 +5,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import weplus.sfg_pet_clinic.model.Owner;
+import weplus.sfg_pet_clinic.model.PetType;
 import weplus.sfg_pet_clinic.model.Vet;
 import weplus.sfg_pet_clinic.services.OwnerService;
+import weplus.sfg_pet_clinic.services.PetTypeService;
 import weplus.sfg_pet_clinic.services.VetService;
 
 @Component
@@ -15,9 +17,15 @@ public class DataLoad implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
 
-    public DataLoad(OwnerService ownerService, VetService vetService){
+    private final PetTypeService petTypeService;
+
+    public DataLoad(OwnerService ownerService,
+                    VetService vetService,
+                    PetTypeService petTypeService){
+
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petTypeService = petTypeService;
     }
 
     @Override
@@ -54,6 +62,18 @@ public class DataLoad implements CommandLineRunner {
         vetService.save(vet2);
 
         System.out.println("Loaded Vets.....");
+
+        PetType dog = new PetType();
+        dog.setName("Dog");
+
+        PetType savedDogPetType = petTypeService.save(dog);
+
+        PetType cat = new PetType();
+        cat.setName("Cat");
+
+        PetType savedCatPetType = petTypeService.save(cat);
+
+        System.out.println("Loaded PetType.....");
 
     }
 }
