@@ -1,12 +1,24 @@
 package weplus.sfg_pet_clinic.model;
 
+import jakarta.persistence.*;
+import org.hibernate.engine.internal.Cascade;
+
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "pets")
 public class Pet extends BaseEntity {
 
+    @Column(name = "name")
     private String Name;
+    @ManyToOne
+    @JoinColumn(name = "type_id")
     private PetType petType;
+
+    @ManyToOne
+    @JoinColumn(name = "ownwer_id")
     private Owner owner;
+    @Column(name = "birth_date")
     private LocalDate birthDate;
 
     public PetType getPetType() {
