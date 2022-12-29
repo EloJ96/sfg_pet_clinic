@@ -9,6 +9,7 @@ import java.util.Set;
 
 public class VetSpecialitySDJpaService implements SpecialityService {
 
+
     private final SpecialityRepository specialityRepository;
 
     public VetSpecialitySDJpaService(SpecialityRepository specialityRepository) {
