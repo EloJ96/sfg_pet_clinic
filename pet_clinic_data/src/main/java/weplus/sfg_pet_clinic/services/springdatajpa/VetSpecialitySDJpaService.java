@@ -32,8 +32,6 @@ public class VetSpecialitySDJpaService implements SpecialityService {
         return specialityRepository.save(object);
     }
 
-
-
     @Override
     public void delete(Speciality object) {
         specialityRepository.delete(object);
