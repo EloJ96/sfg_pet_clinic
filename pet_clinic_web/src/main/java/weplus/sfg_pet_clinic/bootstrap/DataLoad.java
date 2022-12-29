@@ -5,10 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import weplus.sfg_pet_clinic.model.*;
-import weplus.sfg_pet_clinic.services.OwnerService;
-import weplus.sfg_pet_clinic.services.PetTypeService;
-import weplus.sfg_pet_clinic.services.SpecialityService;
-import weplus.sfg_pet_clinic.services.VetService;
+import weplus.sfg_pet_clinic.services.*;
 
 import java.time.LocalDate;
 
@@ -19,17 +16,22 @@ public class DataLoad implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
+    private final VisitService visitService;
 
     public DataLoad(OwnerService ownerService,
                     VetService vetService,
                     PetTypeService petTypeService,
-                    SpecialityService specialityService){
+                    SpecialityService specialityService,
+                    VisitService visitService){
 
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
+
+    //-----------------------------------------------------------------------------------------------------
 
     @Override
     public void run(String... args) throws Exception {
@@ -39,6 +41,8 @@ public class DataLoad implements CommandLineRunner {
             loadData();
         }
     }
+
+    //-----------------------------------------------------------------------------------------------------
 
     private void loadData() {
         PetType dog = new PetType();
@@ -65,6 +69,7 @@ public class DataLoad implements CommandLineRunner {
 
         System.out.println("Loaded PetType.....");
 
+//-----------------------------------------------------------------------------------------------------
 
         Owner owner1 = new Owner();
         owner1.setId(1L);
@@ -83,6 +88,15 @@ public class DataLoad implements CommandLineRunner {
 
         ownerService.save(owner1);
 
+        Visit dogVisit = new Visit();
+        dogVisit.setPet(luigisDog);
+        dogVisit.setDate(LocalDate.now());
+        dogVisit.setDescription("Cane Bagnato");
+
+        visitService.save(dogVisit);
+
+//-----------------------------------------------------------------------------------------------------
+
         Owner owner2 = new Owner();
         owner2.setId(2L);
         owner2.setFirstName("Elena");
@@ -100,7 +114,16 @@ public class DataLoad implements CommandLineRunner {
 
         ownerService.save(owner2);
 
+        Visit catVisit = new Visit();
+        catVisit.setPet(elenasCat);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Gatto bagnato");
+
+        visitService.save(catVisit);
+
         System.out.println("Loaded Owners.....");
+
+//-----------------------------------------------------------------------------------------------------
 
         Vet vet1 = new Vet();
         vet1.setId(1L);
