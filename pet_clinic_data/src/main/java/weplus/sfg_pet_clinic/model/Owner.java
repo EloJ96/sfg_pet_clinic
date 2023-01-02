@@ -1,52 +1,45 @@
 package weplus.sfg_pet_clinic.model;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Setter
+@Getter
+@NoArgsConstructor
+//@AllArgsConstructor
 @Entity
 @Table(name = "owners")
 public class Owner extends Person{
 
-    @Column(name = "address")
-    private String address;
-    @Column(name = "city")
-    private String city;
-    @Column(name = "telephone")
-    private String telephone;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
-    private Set<Pet> pets = new HashSet<>();
-
-    public Set<Pet> getPets() {
-        return pets;
-    }
-
-    public void setPets(Set<Pet> pets) {
+    @Builder
+    public Owner(String address, String city, String telephone, Set<Pet> pets) {
+        this.address = address;
+        this.city = city;
+        this.telephone = telephone;
         this.pets = pets;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
+    public Owner(String firstName, String lastName, String address, String city, String telephone, Set<Pet> pets) {
+        super(firstName, lastName);
         this.address = address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
         this.city = city;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
         this.telephone = telephone;
+        this.pets = pets;
     }
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "telephone")
+    private String telephone;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    private Set<Pet> pets = new HashSet<>();
+
 }
